@@ -5,6 +5,7 @@ from django.db.models import Q
 from client.models import Client
 from subscriber.models import Subscriber
 from user.constants import ConflictReason
+from user.utils import create_conflict_report
 
 
 class User(models.Model):
@@ -40,7 +41,7 @@ class User(models.Model):
                 if list(all_client_phones).count(matching_client.phone) > 1:
                     conflicts.append({
                         'id': subscriber.id, 'email': subscriber.email,
-                        'reason': ConflictReason.CLIENT_PHONE_NOT_UNIQUE
+                        'reason': ConflictReason.CLIENT_PHONE_NOT_UNIQUE.value
                     })
                     continue
 
@@ -51,7 +52,7 @@ class User(models.Model):
                     if matching_users:
                         conflicts.append({
                             'id': subscriber.id, 'email': subscriber.email,
-                            'reason': ConflictReason.USER_CONFLICT
+                            'reason': ConflictReason.USER_CONFLICT.value
                         })
                         continue
                 # create user using client data
@@ -71,11 +72,7 @@ class User(models.Model):
 
         User.objects.bulk_create(users_to_create)
 
-        import pdb;pdb.set_trace()
-
         if conflicts:
-            # todo add later
-            # create_conflict_report(conflicts)
-            print('generating conflict report')
+            create_conflict_report(report_type='subscriber', data=conflicts)
 
         print(f'Database hits: {len(connection.queries)}')  # todo remove later
