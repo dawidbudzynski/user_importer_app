@@ -1,4 +1,3 @@
-from django.db import connection  # todo remove later
 from django.db.models import Q
 
 from client.models import Client
@@ -31,9 +30,7 @@ class SubscriberImporter:
             User.objects.bulk_create(self.users_to_create)
 
         if self.conflicts:
-            create_conflict_report(report_type='subscriber', data=self.conflicts)
-
-        print(f'Database hits: {len(connection.queries)}')  # todo remove later
+            create_conflict_report(report_type=import_type, data=self.conflicts)
 
     def import_subscribers(self):
         for subscriber in Subscriber.objects.all():

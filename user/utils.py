@@ -3,7 +3,7 @@ import time
 
 
 def create_conflict_report(report_type, data):
-    if report_type == 'subscriberSMS':
+    if report_type == 'SubscriberSMS':
         filename = f'reports/subscribersms_conflicts_{time.strftime("%Y%m%d-%H%M%S")}.csv'
     else:
         filename = f'reports/subscriber_conflicts_{time.strftime("%Y%m%d-%H%M%S")}.csv'
