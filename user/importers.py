@@ -74,7 +74,8 @@ class SubscriberImporter:
                 # create user using subscriber data
                 new_user = User(
                     email=subscriber.email,
-                    gdpr_consent=subscriber.gdpr_consent
+                    gdpr_consent=subscriber.gdpr_consent,
+                    imported_from_subscriber=True
                 )
                 self.users_to_create.append(new_user)
 
@@ -117,6 +118,7 @@ class SubscriberImporter:
                 # create user using subscriber_sms data
                 new_user = User(
                     phone=subscriber_sms.phone,
-                    gdpr_consent=subscriber_sms.gdpr_consent
+                    gdpr_consent=subscriber_sms.gdpr_consent,
+                    imported_from_subscribersms=True
                 )
                 self.users_to_create.append(new_user)

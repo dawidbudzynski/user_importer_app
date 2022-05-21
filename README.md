@@ -48,3 +48,6 @@ python manage.py run_import_subscribers --import_type Subscriber
 ```
 python manage.py run_import_subscribers --import_type SubscriberSMS
 ```
+```
+python manage.py update_gdpr_consent
+```

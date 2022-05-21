@@ -4,7 +4,7 @@ from django.db import models
 class Subscriber(models.Model):
     create_date = models.DateTimeField(verbose_name='create date', auto_now_add=True)
     email = models.EmailField(verbose_name='email', unique=True)
-    gdpr_consent = models.BooleanField(verbose_name='gdpr consent')
+    gdpr_consent = models.BooleanField(verbose_name='gdpr consent', default=False)
 
     class Meta:
         verbose_name = 'Subscriber'
