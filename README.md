@@ -40,3 +40,11 @@ python manage.py loaddata client_data.json && \
 python manage.py loaddata subscriber_data.json && \
 python manage.py loaddata subscribersms_data.json
 ```
+
+## Available commands
+```
+python manage.py run_import_subscribers --import_type Subscriber
+```
+```
+python manage.py run_import_subscribers --import_type SubscriberSMS
+```

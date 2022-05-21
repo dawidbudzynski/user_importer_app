@@ -1,5 +1,10 @@
 import enum
 
+ALLOWED_IMPORT_TYPES = [
+    'Subscriber',
+    'SubscriberSMS'
+]
+
 
 class ConflictReason(enum.Enum):
     USER_CONFLICT = 'User conflict'
