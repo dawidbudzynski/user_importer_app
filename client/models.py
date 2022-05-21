@@ -9,3 +9,6 @@ class Client(models.Model):
     class Meta:
         verbose_name = 'Client'
         verbose_name_plural = 'Clients'
+
+    def __str__(self):
+        return f'{self.id} - {self.email}'

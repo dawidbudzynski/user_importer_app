@@ -10,3 +10,6 @@ class User(models.Model):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+    def __str__(self):
+        return f'{self.id} - {self.email}'

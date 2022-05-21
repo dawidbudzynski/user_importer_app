@@ -9,3 +9,6 @@ class SubscriberSMS(models.Model):
     class Meta:
         verbose_name = 'SubscriberSMS'
         verbose_name_plural = 'SubscriberSMS'
+
+    def __str__(self):
+        return f'{self.id} - {self.phone}'
