@@ -363,7 +363,7 @@
     "pk": 41,
     "model": "client.Client",
     "fields": {
-      "email": "alvarado@mail.com",
+      "email": "smithh@mail.com",
       "phone": 527907516,
       "create_date": "2014-09-24T00:27:19.559Z"
     }
@@ -373,7 +373,7 @@
     "model": "client.Client",
     "fields": {
       "email": "rodriguez@mail.com",
-      "phone": 748977961,
+      "phone": 527907516,
       "create_date": "2011-10-16T15:41:06.778Z"
     }
   },
@@ -382,7 +382,7 @@
     "model": "client.Client",
     "fields": {
       "email": "wong@mail.com",
-      "phone": 377132619,
+      "phone": 527907516,
       "create_date": "2013-11-29T02:15:27.165Z"
     }
   },
@@ -390,7 +390,7 @@
     "pk": 44,
     "model": "client.Client",
     "fields": {
-      "email": "solomon@mail.com",
+      "email": "pennington@mail.com",
       "phone": 709389212,
       "create_date": "2010-06-07T16:43:19.613Z"
     }
@@ -453,7 +453,7 @@
     "pk": 51,
     "model": "client.Client",
     "fields": {
-      "email": "jefferson@mail.com",
+      "email": "morales@mail.com",
       "phone": 352684874,
       "create_date": "2011-02-25T19:18:44.778Z"
     }
