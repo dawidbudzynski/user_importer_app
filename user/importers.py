@@ -40,7 +40,7 @@ class SubscriberImporter:
             if subscriber.email in self.all_client_emails:
                 matching_client = Client.objects.get(email=subscriber.email)
 
-                # check if client phone is unique
+                # check if client phone is not unique
                 if list(self.all_client_phones).count(matching_client.phone) > 1:
                     self.conflicts.append({
                         'id': subscriber.id, 'email': subscriber.email,
@@ -82,12 +82,12 @@ class SubscriberImporter:
                 continue
 
             if subscriber_sms.phone in self.all_client_phones:
-                matching_client = Client.objects.get(phone=subscriber_sms.phone)
-
-                # check if client phone is unique
-                if list(self.all_client_phones).count(matching_client.phone) > 1:
+                # get matching client and check if client phone is not unique
+                try:
+                    matching_client = Client.objects.get(phone=subscriber_sms.phone)
+                except Client.MultipleObjectsReturned:
                     self.conflicts.append({
-                        'id': subscriber_sms.id, 'email': subscriber_sms.email,
+                        'id': subscriber_sms.id, 'phone': subscriber_sms.phone,
                         'reason': ConflictReason.CLIENT_PHONE_NOT_UNIQUE.value
                     })
                     continue
@@ -99,7 +99,7 @@ class SubscriberImporter:
                     )
                     if matching_users:
                         self.conflicts.append({
-                            'id': subscriber_sms.id, 'email': subscriber_sms.email,
+                            'id': subscriber_sms.id, 'phone': subscriber_sms.phone,
                             'reason': ConflictReason.USER_CONFLICT.value
                         })
                         continue
