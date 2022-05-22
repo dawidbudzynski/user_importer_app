@@ -64,7 +64,7 @@
     "model": "user.User",
     "fields": {
       "email": "welch@mail.com",
-      "phone": 494611913,
+      "phone": 495898436,
       "create_date": "2010-01-06T10:04:12.918Z",
       "gdpr_consent": true
     }
@@ -74,7 +74,7 @@
     "model": "user.User",
     "fields": {
       "email": "grimes@mail.com",
-      "phone": 962428847,
+      "phone": 957736777,
       "create_date": "2012-02-18T11:29:56.285Z",
       "gdpr_consent": true
     }
@@ -83,7 +83,7 @@
     "pk": 9,
     "model": "user.User",
     "fields": {
-      "email": "snider@mail.com",
+      "email": "woodard@mail.com",
       "phone": 578364321,
       "create_date": "2013-07-14T06:27:50.221Z",
       "gdpr_consent": true

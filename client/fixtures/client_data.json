@@ -229,7 +229,7 @@
     "model": "client.Client",
     "fields": {
       "email": "woodard@mail.com",
-      "phone": 663472243,
+      "phone": 951888004,
       "create_date": "2010-12-14T02:25:57.789Z"
     }
   },
@@ -247,7 +247,7 @@
     "model": "client.Client",
     "fields": {
       "email": "gibson@mail.com",
-      "phone": 920036327,
+      "phone": 407442276,
       "create_date": "2011-10-02T12:40:07.288Z"
     }
   },
@@ -256,7 +256,7 @@
     "model": "client.Client",
     "fields": {
       "email": "conley@mail.com",
-      "phone": 516783540,
+      "phone": 407442276,
       "create_date": "2010-12-21T15:47:36.388Z"
     }
   },
