@@ -1,8 +1,12 @@
+from itertools import islice
+
 from django.core.management.base import BaseCommand
 
 from subscriber.models import Subscriber
 from subscribersms.models import SubscriberSMS
 from user.models import User
+
+BATCH_SIZE = 10000
 
 
 class Command(BaseCommand):
@@ -17,7 +21,15 @@ class Command(BaseCommand):
         self.update_users_created_from_subscriberssms()
 
         if self.users_to_update:
-            User.objects.bulk_update(self.users_to_update, fields=['create_date'])
+            self.update_users_in_batches()
+
+    def update_users_in_batches(self):
+        objects_to_update = (user for user in self.users_to_update)
+        while True:
+            batch = list(islice(objects_to_update, BATCH_SIZE))
+            if not batch:
+                break
+            User.objects.bulk_update(batch, fields=['create_date'], batch_size=BATCH_SIZE)
 
     def update_users_with_matching_subscribers(self):
         all_user_emails = User.objects.all().values_list('email', flat=True)

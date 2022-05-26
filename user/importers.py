@@ -1,3 +1,5 @@
+from itertools import islice
+
 from django.db.models import Q
 
 from client.models import Client
@@ -6,6 +8,8 @@ from subscribersms.models import SubscriberSMS
 from user.constants import ConflictReason, ALLOWED_IMPORT_TYPES
 from user.models import User
 from user.utils import create_conflict_report
+
+BATCH_SIZE = 10000
 
 
 class SubscriberImporter:
@@ -27,10 +31,18 @@ class SubscriberImporter:
             self.import_subscriberssms()
 
         if self.users_to_create:
-            User.objects.bulk_create(self.users_to_create)
+            self.create_users_in_batches()
 
         if self.conflicts:
             create_conflict_report(report_type=import_type, data=self.conflicts)
+
+    def create_users_in_batches(self):
+        objects_to_create = (user for user in self.users_to_create)
+        while True:
+            batch = list(islice(objects_to_create, BATCH_SIZE))
+            if not batch:
+                break
+            User.objects.bulk_create(batch, batch_size=BATCH_SIZE)
 
     def import_subscribers(self):
         for subscriber in Subscriber.objects.all():
